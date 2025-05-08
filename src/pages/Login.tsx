@@ -6,9 +6,12 @@ import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { LogIn, User } from 'lucide-react';
+import { LogIn } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Login = () => {
+  const { t } = useLanguage();
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Login logic would go here
@@ -27,7 +30,7 @@ const Login = () => {
               <CardHeader className="text-center pt-8">
                 <div className="flex items-center justify-center mb-2">
                   <LogIn className="h-6 w-6 text-school-yellow mr-2" />
-                  <CardTitle className="text-2xl font-bold">Login</CardTitle>
+                  <CardTitle className="text-2xl font-bold">{t('login')}</CardTitle>
                 </div>
                 <p className="text-gray-600">
                   Access your VVVP account
@@ -36,8 +39,8 @@ const Login = () => {
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-1">Email Address</label>
-                    <Input id="email" type="email" placeholder="Enter your email" required className="bg-gray-50" />
+                    <label htmlFor="email" className="block text-sm font-medium mb-1">{t('emailAddress')}</label>
+                    <Input id="email" type="email" placeholder={t('yourEmail')} required className="bg-gray-50" />
                   </div>
                   
                   <div>
@@ -62,7 +65,7 @@ const Login = () => {
                   </div>
                   
                   <Button type="submit" className="school-button w-full">
-                    Sign In
+                    {t('login')}
                   </Button>
                 </form>
                 

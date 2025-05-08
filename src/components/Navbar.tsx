@@ -9,10 +9,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [language, setLanguage] = useState('en'); // 'en' for English, 'mr' for Marathi
+  const { language, setLanguage, t } = useLanguage();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -36,18 +37,18 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <span className="text-2xl font-bold text-school-yellow">VVVP</span>
-              <span className="hidden md:block ml-2 text-lg font-semibold">Primary School</span>
+              <span className="hidden md:block ml-2 text-lg font-semibold">{t('primarySchool')}</span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="font-medium hover:text-school-yellow transition-colors">Home</Link>
-            <Link to="/about" className="font-medium hover:text-school-yellow transition-colors">About</Link>
-            <Link to="/contact" className="font-medium hover:text-school-yellow transition-colors">Contact</Link>
-            <Link to="/blogs" className="font-medium hover:text-school-yellow transition-colors">Blogs</Link>
-            <Link to="/highlights" className="font-medium hover:text-school-yellow transition-colors">Highlights</Link>
-            <Link to="/login" className="font-medium hover:text-school-yellow transition-colors">Login</Link>
+            <Link to="/" className="font-medium hover:text-school-yellow transition-colors">{t('home')}</Link>
+            <Link to="/about" className="font-medium hover:text-school-yellow transition-colors">{t('about')}</Link>
+            <Link to="/contact" className="font-medium hover:text-school-yellow transition-colors">{t('contact')}</Link>
+            <Link to="/blogs" className="font-medium hover:text-school-yellow transition-colors">{t('blogs')}</Link>
+            <Link to="/highlights" className="font-medium hover:text-school-yellow transition-colors">{t('highlights')}</Link>
+            <Link to="/login" className="font-medium hover:text-school-yellow transition-colors">{t('login')}</Link>
             
             {/* Language Selector */}
             <DropdownMenu>
@@ -75,7 +76,7 @@ const Navbar = () => {
 
           <div className="hidden md:block">
             <Button asChild className="school-button animate-bounce-slight">
-              <Link to="/admissions">Admissions</Link>
+              <Link to="/admissions">{t('admissions')}</Link>
             </Button>
           </div>
 
@@ -114,16 +115,16 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden py-4 bg-white border-t">
             <div className="flex flex-col space-y-3">
-              <Link to="/" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>Home</Link>
-              <Link to="/about" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>About</Link>
-              <Link to="/contact" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>Contact</Link>
-              <Link to="/blogs" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>Blogs</Link>
-              <Link to="/highlights" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>Highlights</Link>
-              <Link to="/login" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>Login</Link>
+              <Link to="/" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>{t('home')}</Link>
+              <Link to="/about" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>{t('about')}</Link>
+              <Link to="/contact" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>{t('contact')}</Link>
+              <Link to="/blogs" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>{t('blogs')}</Link>
+              <Link to="/highlights" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>{t('highlights')}</Link>
+              <Link to="/login" className="px-4 py-2 hover:bg-gray-100 rounded-md" onClick={toggleMenu}>{t('login')}</Link>
               
               <div className="px-4 pt-2">
                 <Button asChild className="school-button w-full">
-                  <Link to="/admissions" onClick={toggleMenu}>Admissions</Link>
+                  <Link to="/admissions" onClick={toggleMenu}>{t('admissions')}</Link>
                 </Button>
               </div>
             </div>

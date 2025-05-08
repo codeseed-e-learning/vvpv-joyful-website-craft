@@ -2,17 +2,20 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { MapPin } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const LocationMap = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="location" className="school-section bg-school-peach/20">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center mb-2">
           <MapPin className="h-8 w-8 text-school-yellow mr-2" />
-          <h2 className="school-heading">Find Us</h2>
+          <h2 className="school-heading">{t('findUs')}</h2>
         </div>
         <p className="text-center text-lg mb-10 max-w-2xl mx-auto">
-          We're conveniently located in the heart of the city, easily accessible by public transportation.
+          {t('findUsDesc')}
         </p>
         
         <Card className="border-none shadow-lg overflow-hidden">
@@ -37,27 +40,27 @@ const LocationMap = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           <Card className="bg-white border-none shadow-lg">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold mb-2">Getting Here</h3>
+              <h3 className="text-xl font-bold mb-2">{t('gettingHere')}</h3>
               <p className="text-gray-600">
-                Our school is easily accessible by bus routes 34, 56, and 78. The nearest metro station is Education Center, just a 5-minute walk away.
+                {t('gettingHereDesc')}
               </p>
             </CardContent>
           </Card>
           
           <Card className="bg-white border-none shadow-lg">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold mb-2">Parking Facilities</h3>
+              <h3 className="text-xl font-bold mb-2">{t('parkingFacilities')}</h3>
               <p className="text-gray-600">
-                Ample parking space is available for parents and visitors within the school premises. Security personnel are always present.
+                {t('parkingFacilitiesDesc')}
               </p>
             </CardContent>
           </Card>
           
           <Card className="bg-white border-none shadow-lg">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold mb-2">School Bus Service</h3>
+              <h3 className="text-xl font-bold mb-2">{t('schoolBusService')}</h3>
               <p className="text-gray-600">
-                We offer door-to-door pickup and drop service covering all major areas of the city with GPS-enabled buses.
+                {t('schoolBusServiceDesc')}
               </p>
             </CardContent>
           </Card>

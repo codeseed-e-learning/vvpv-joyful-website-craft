@@ -2,38 +2,41 @@
 import React from 'react';
 import { Image, GalleryHorizontal } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ImageGallery = () => {
+  const { t } = useLanguage();
+  
   const galleryItems = [
     {
       image: "https://images.unsplash.com/photo-1534097050761-91113cf0304e?auto=format&fit=crop&q=80",
-      category: "Classroom",
-      title: "Interactive Learning"
+      category: t('classroom'),
+      title: t('interactiveLearning')
     },
     {
       image: "https://images.unsplash.com/photo-1627145733136-d92b65117e49?auto=format&fit=crop&q=80",
-      category: "Activities",
-      title: "Art & Craft"
+      category: t('activities'),
+      title: t('artCraft')
     },
     {
       image: "https://images.unsplash.com/photo-1544210163-257effe9399e?auto=format&fit=crop&q=80",
-      category: "Sports",
-      title: "Physical Education"
+      category: t('sports'),
+      title: t('physicalEducation')
     },
     {
       image: "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&q=80",
-      category: "Events",
-      title: "Annual Day Celebration"
+      category: t('events'),
+      title: t('annualDayCelebration')
     },
     {
       image: "https://images.unsplash.com/photo-1489945052260-4f21c52268b9?auto=format&fit=crop&q=80",
-      category: "Library",
-      title: "Reading Session"
+      category: t('library'),
+      title: t('readingSession')
     },
     {
       image: "https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?auto=format&fit=crop&q=80",
-      category: "Science",
-      title: "Hands-on Experiments"
+      category: t('science'),
+      title: t('handsOnExperiments')
     }
   ];
 
@@ -42,10 +45,10 @@ const ImageGallery = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center mb-2">
           <Image className="h-8 w-8 text-school-yellow mr-2" />
-          <h2 className="school-heading">Our School Gallery</h2>
+          <h2 className="school-heading">{t('ourSchoolGallery')}</h2>
         </div>
         <p className="text-center text-lg mb-10 max-w-2xl mx-auto">
-          Take a glimpse into the vibrant and joyful world of VVVP, where learning comes alive through various activities and events.
+          {t('galleryDesc')}
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -68,7 +71,7 @@ const ImageGallery = () => {
         
         <div className="text-center mt-10">
           <a href="#" className="inline-flex items-center text-school-yellow hover:underline font-semibold">
-            <span>View Full Gallery</span>
+            <span>{t('viewFullGallery')}</span>
             <GalleryHorizontal className="ml-2 h-5 w-5" />
           </a>
         </div>

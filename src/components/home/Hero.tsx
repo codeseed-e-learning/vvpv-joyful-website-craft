@@ -42,8 +42,8 @@ const Hero = () => {
             
             <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg">
               <div className="bg-school-yellow p-2 rounded">
-                <p className="font-bold">Admissions Open</p>
-                <p className="text-sm">For Academic Year 2025-26</p>
+                <p className="font-bold">{t('admissionsOpen')}</p>
+                <p className="text-sm">{t('forAcademicYear')}</p>
               </div>
             </div>
           </div>

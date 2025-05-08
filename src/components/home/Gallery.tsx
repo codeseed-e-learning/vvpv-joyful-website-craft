@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Image, Gallery } from 'lucide-react';
+import { Image, GalleryHorizontal } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 const ImageGallery = () => {
@@ -69,7 +69,7 @@ const ImageGallery = () => {
         <div className="text-center mt-10">
           <a href="#" className="inline-flex items-center text-school-yellow hover:underline font-semibold">
             <span>View Full Gallery</span>
-            <Gallery className="ml-2 h-5 w-5" />
+            <GalleryHorizontal className="ml-2 h-5 w-5" />
           </a>
         </div>
       </div>

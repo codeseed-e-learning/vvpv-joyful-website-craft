@@ -2,29 +2,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="relative bg-gradient-to-b from-school-yellow/30 to-white py-12 md:py-24">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              <span className="block">Welcome to</span>
+              <span className="block">{t('welcomeTo')}</span>
               <span className="text-school-yellow animate-float block">Vivek Vardhini</span>
               <span className="block">Vidyalaya</span>
             </h1>
             <p className="text-xl text-gray-700 mb-8">
-              Where education meets joy and creativity!
-              Nurturing young minds for a brighter tomorrow.
+              {t('whereEducation')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Button asChild className="school-button text-lg px-8 py-6">
-                <Link to="/admissions">Apply for Admission</Link>
+                <Link to="/admissions">{t('applyForAdmission')}</Link>
               </Button>
               <Button asChild variant="outline" className="border-2 border-school-yellow bg-white text-black hover:bg-school-yellow/10 text-lg px-8 py-6">
-                <Link to="/about">Discover More</Link>
+                <Link to="/about">{t('discoverMore')}</Link>
               </Button>
             </div>
           </div>

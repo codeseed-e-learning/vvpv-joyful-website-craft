@@ -2,13 +2,31 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [language, setLanguage] = useState('en'); // 'en' for English, 'mr' for Marathi
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleLanguage = (lang: string) => {
+    setLanguage(lang);
+    // In a real implementation, this would trigger the translation of the website
+    console.log(`Language changed to: ${lang}`);
+    
+    // Simple demonstration of how translation would work
+    // In a real app, you would use a proper translation library like i18next
+    const event = new CustomEvent('languageChange', { detail: { language: lang } });
+    window.dispatchEvent(event);
   };
 
   return (
@@ -30,6 +48,29 @@ const Navbar = () => {
             <Link to="/blogs" className="font-medium hover:text-school-yellow transition-colors">Blogs</Link>
             <Link to="/highlights" className="font-medium hover:text-school-yellow transition-colors">Highlights</Link>
             <Link to="/login" className="font-medium hover:text-school-yellow transition-colors">Login</Link>
+            
+            {/* Language Selector */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon" className="border-school-yellow">
+                  <Globe className="h-5 w-5 text-school-yellow" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem 
+                  onClick={() => toggleLanguage('en')}
+                  className={`${language === 'en' ? 'bg-school-yellow/20' : ''}`}
+                >
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => toggleLanguage('mr')}
+                  className={`${language === 'mr' ? 'bg-school-yellow/20' : ''}`}
+                >
+                  मराठी (Marathi)
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           <div className="hidden md:block">
@@ -39,7 +80,30 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            {/* Language Selector for Mobile */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon" className="border-school-yellow">
+                  <Globe className="h-5 w-5 text-school-yellow" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem 
+                  onClick={() => toggleLanguage('en')}
+                  className={`${language === 'en' ? 'bg-school-yellow/20' : ''}`}
+                >
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => toggleLanguage('mr')}
+                  className={`${language === 'mr' ? 'bg-school-yellow/20' : ''}`}
+                >
+                  मराठी (Marathi)
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             <Button variant="ghost" size="icon" onClick={toggleMenu} className="text-black">
               {isOpen ? <X /> : <Menu />}
             </Button>
